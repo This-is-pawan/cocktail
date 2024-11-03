@@ -1,24 +1,39 @@
 const section = document.querySelector(".section");
+const sectionAlign = document.querySelector(".sectionAlign");
 const loader = document.querySelector(".loader");
 const products = document.querySelector(".products-details");
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a";
 
-let dataFunction = async (url) => {
+const dataFunction = async (url) => {
   try {
-    let resp = await fetch(url, {
+    const resp = await fetch(url, {
       headers: { Accept: "application/json" },
     });
-    let res = await resp.json();
-    let drinkData = [...res.drinks];
+    const res = await resp.json();
+    const drinkData = [...res.drinks];
 
-    let result = drinkData
-      .map((item) => {
-        const { idDrink, strDrink, strIngredient1, strDrinkThumb } = item;
+    form.addEventListener("keyup", () => {
+      const searchItem = input.value.toLowerCase();
+      const filteredDrinks = drinkData.filter((drink) =>
+        drink.strDrink.toLowerCase().includes(searchItem)
+      );
+      renderDrink(filteredDrinks);
+    });
 
-        return `
+    const renderDrink = (drinkData) => {
+      if (drinkData.length < 1) {
+        sectionAlign.innerHTML = `<h2 class='heading'>Sorry, no products matched your search</h2>`;
+        return;
+      }
+
+      section.innerHTML = drinkData
+        .map(({ idDrink, strDrink, strIngredient1, strDrinkThumb }) => `
           <section class="Section">
             <article class="sectionAlign">
-              <article class="loading" id='${idDrink}'>
+              <article class="loading" id="${idDrink}">
                 <img src="${strDrinkThumb}" class="images" alt="${strDrink}" data-id="${idDrink}">
                 <div class="section-center">
                   <h3 class="title">${strIngredient1}</h3>
@@ -27,49 +42,33 @@ let dataFunction = async (url) => {
               </article>
             </article>
           </section>
-        `;
-      })
-      .join("");
+        `)
+        .join("");
 
-    section.innerHTML = result;
+      document.querySelectorAll(".images").forEach((img) => {
+        img.addEventListener("click", (e) => {
+          const drinkId = e.target.getAttribute("data-id");
+          const selectedDrink = drinkData.find((drink) => drink.idDrink === drinkId);
 
-    const images = document.querySelectorAll(".images");
-    const productsDetails = document.querySelector(".products-details");
+          products.innerHTML = `
+            <div class="details">
+              <article class="xmark">
+                <i class="fas fa-xmark"></i>
+              </article>
+              <img src="${selectedDrink.strDrinkThumb}" alt="${selectedDrink.strDrink}">
+              <span>${selectedDrink.strDrink}</span>
+              <p>ID: ${selectedDrink.idDrink}</p>
+            </div>
+          `;
 
-    images.forEach((img) => {
-      img.addEventListener("click", (e) => {
-        const drinkId = e.target.getAttribute("data-id");
-
-        let newImg = drinkData
-          .filter((drink) => drink.idDrink === drinkId)
-          .map((drink) => {
-            const { strDrinkThumb, strDrink, idDrink } = drink;
-            return `
-            
-              <div class="details">
-              <article class='xmark'>
-            <i class="fas fa-xmark"></i>
-            </article>
-                <img src="${strDrinkThumb}" alt="${strDrink}">
-                <span>${strDrink}</span>
-                <p>ID: ${idDrink}</p>
-              </div>
-            `;
-          })
-          .join("");
-
-        productsDetails.innerHTML = newImg;
-        const xmark = document.querySelectorAll(".fa-xmark");
-        const details = document.querySelectorAll(".details");
-        xmark.forEach((ev) => {
-          ev.addEventListener("click", (e) => {
-            if (e.target.classList.contains('fa-xmark')) {
-             products.innerHTML=''
-            }
+          document.querySelector(".fa-xmark").addEventListener("click", () => {
+            products.innerHTML = "";
           });
         });
       });
-    });
+    };
+
+    renderDrink(drinkData);
   } catch (error) {
     console.error("Error fetching data:", error);
   }

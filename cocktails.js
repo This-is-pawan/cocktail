@@ -56,8 +56,11 @@ const dataFunction = async (url) => {
                 <i class="fas fa-xmark"></i>
               </article>
               <article class='sider_btn'>
-              <button><</button>
-              <button>></button>
+              {let upword=()=>{
+              console.log('upword click is successful')
+}
+              <button  onclick="upword"><</button>
+              <button  onclick="downword">></button>
               </article>
               <img src="${selectedDrink.strDrinkThumb}" alt="${selectedDrink.strDrink}">
               <span>${selectedDrink.strDrink}</span>

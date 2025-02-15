@@ -49,13 +49,14 @@ const dataFunction = async (url) => {
         img.addEventListener("click", (e) => {
           const drinkId = e.target.getAttribute("data-id");
           const selectedDrink = drinkData.find((drink) => drink.idDrink === drinkId);
-                    let upword = () => {
+        window.upword = () => {
   console.log('This is click successful');
 };
 
-let downword = () => {
+window.downword = () => {
   console.log('Downword button clicked');
 };
+
           products.innerHTML = `
             <div class="details">
               <article class="xmark">

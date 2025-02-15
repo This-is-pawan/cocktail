@@ -196,12 +196,12 @@ input:focus {
   border:none;
   padding:2px;
   border-radius:5px;
-
+cursor: pointer;
 }
 .sider_btn button{
   border:none;
   background:pink;
   border-radius:5px;
-  cursor:pointer;
+  
 }
 

@@ -191,10 +191,10 @@ input:focus {
 .sider_btn{
   position:absoulte;
   top:2rem ;
-  
-}
-.sider_btn button{
-  border:none;
+    border:none;
   padding:2px;
   border-radius:5px;
+  display:flex;
+  justify-content:center;
 }
+

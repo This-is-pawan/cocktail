@@ -44,14 +44,14 @@ const dataFunction = async (url) => {
         `)
         .join("");
  window.upword = () => {
-   clicking()
-  // console.log('This is click successful');
+
+  console.log('This is click successful');
 };
 
 window.downword = () => {
   console.log('Downword button clicked');
 };
-      function clicking(){
+ 
       document.querySelectorAll(".images").forEach((img) => {
         img.addEventListener("click", (e) => {
           const drinkId = e.target.getAttribute("data-id");
@@ -78,7 +78,7 @@ window.downword = () => {
         });
       });
     };
-  } 
+  
     renderDrink(drinkData);
     }
   catch (error) {

@@ -28,7 +28,6 @@ const dataFunction = async (url) => {
         sectionAlign.innerHTML = `<h2 class='heading'>Sorry, no products matched your search</h2>`;
         return;
       }
-
       section.innerHTML = drinkData
         .map(({ idDrink, strDrink, strIngredient1, strDrinkThumb }) => `
           <section class="Section">
@@ -45,12 +44,14 @@ const dataFunction = async (url) => {
         `)
         .join("");
  window.upword = () => {
+   clicking()
   // console.log('This is click successful');
 };
 
 window.downword = () => {
   console.log('Downword button clicked');
 };
+      function clicking(){
       document.querySelectorAll(".images").forEach((img) => {
         img.addEventListener("click", (e) => {
           const drinkId = e.target.getAttribute("data-id");
@@ -77,9 +78,10 @@ window.downword = () => {
         });
       });
     };
-
     renderDrink(drinkData);
-  } catch (error) {
+  } 
+    }
+  catch (error) {
     console.error("Error fetching data:", error);
   }
 };

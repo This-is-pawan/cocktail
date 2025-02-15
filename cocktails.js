@@ -56,7 +56,7 @@ const dataFunction = async (url) => {
                 <i class="fas fa-xmark"></i>
               </article>
               <article class='sider_btn'>
-              {let upword=()=>{
+              let upword=()=>{
               console.log('upword click is successful')
 }
               <button  onclick="upword"><</button>

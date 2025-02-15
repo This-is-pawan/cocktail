@@ -202,5 +202,6 @@ input:focus {
   border:none;
   background:pink;
   border-radius:5px;
+  cursor:pointer;
 }
 

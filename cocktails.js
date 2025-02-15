@@ -45,7 +45,7 @@ const dataFunction = async (url) => {
         `)
         .join("");
  window.upword = () => {
-  console.log('This is click successful');
+  // console.log('This is click successful');
 };
 
 window.downword = () => {

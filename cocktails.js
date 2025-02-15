@@ -44,19 +44,17 @@ const dataFunction = async (url) => {
           </section>
         `)
         .join("");
-
-      document.querySelectorAll(".images").forEach((img) => {
-        img.addEventListener("click", (e) => {
-          const drinkId = e.target.getAttribute("data-id");
-          const selectedDrink = drinkData.find((drink) => drink.idDrink === drinkId);
-        window.upword = () => {
+ window.upword = () => {
   console.log('This is click successful');
 };
 
 window.downword = () => {
   console.log('Downword button clicked');
 };
-
+      document.querySelectorAll(".images").forEach((img) => {
+        img.addEventListener("click", (e) => {
+          const drinkId = e.target.getAttribute("data-id");
+          const selectedDrink = drinkData.find((drink) => drink.idDrink === drinkId);
           products.innerHTML = `
             <div class="details">
               <article class="xmark">

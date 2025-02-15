@@ -198,4 +198,9 @@ input:focus {
   border-radius:5px;
 
 }
+.sider_btn button{
+  border:none;
+  background:pink;
+  border-radius:5px;
+}
 

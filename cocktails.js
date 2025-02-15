@@ -57,11 +57,12 @@ const dataFunction = async (url) => {
               </article>
               <article class='sider_btn'>
               <button><</button>
+              <button>></button>
+              </article>
               <img src="${selectedDrink.strDrinkThumb}" alt="${selectedDrink.strDrink}">
               <span>${selectedDrink.strDrink}</span>
               <p>ID: ${selectedDrink.idDrink}</p>
-              <button>></button>
-              </article>
+              
             </div>
           `;
 

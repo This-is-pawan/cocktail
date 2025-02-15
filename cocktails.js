@@ -78,8 +78,8 @@ window.downword = () => {
         });
       });
     };
-    renderDrink(drinkData);
   } 
+    renderDrink(drinkData);
     }
   catch (error) {
     console.error("Error fetching data:", error);

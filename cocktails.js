@@ -22,7 +22,14 @@ const dataFunction = async (url) => {
       );
       renderDrink(filteredDrinks);
     });
+ window.upWord = () => {
 
+  console.log('This is click successful');
+};
+
+window.downword = () => {
+  console.log('Downword button clicked');
+};
     const renderDrink = (drinkData) => {
       if (drinkData.length < 1) {
         sectionAlign.innerHTML = `<h2 class='heading'>Sorry, no products matched your search</h2>`;
@@ -43,27 +50,20 @@ const dataFunction = async (url) => {
           </section>
         `)
         .join("");
- window.upword = () => {
 
-  console.log('This is click successful');
-};
-
-window.downword = () => {
-  console.log('Downword button clicked');
-};
  
       document.querySelectorAll(".images").forEach((img) => {
         img.addEventListener("click", (e) => {
           const drinkId = e.target.getAttribute("data-id");
-          const selectedDrink = drinkData.find((drink) => drink.idDrink === drinkId);
+          const selectedDrink = drinkData.filter((drink) => drink.idDrink === drinkId);
           products.innerHTML = `
             <div class="details">
               <article class="xmark">
                 <i class="fas fa-xmark"></i>
               </article>
                <article class='sider_btn'>
-      <button onclick="upword()"><</button>
-      <button onclick="downword()">></button>
+      <button onclick="upWord()"><</button>
+      <button onclick="downWord()">></button>
     </article>
               <img src="${selectedDrink.strDrinkThumb}" alt="${selectedDrink.strDrink}">
               <span>${selectedDrink.strDrink}</span>

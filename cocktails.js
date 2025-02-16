@@ -55,7 +55,7 @@ window.downword = () => {
       document.querySelectorAll(".images").forEach((img) => {
         img.addEventListener("click", (e) => {
           const drinkId = e.target.getAttribute("data-id");
-          const selectedDrink = drinkData.filter((drink) => drink.idDrink === drinkId);
+          const selectedDrink = drinkData.find((drink) => drink.idDrink === drinkId);
           products.innerHTML = `
             <div class="details">
               <article class="xmark">

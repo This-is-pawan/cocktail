@@ -199,6 +199,7 @@ input:focus {
 cursor: pointer;
 }
 .sider_btn button{
+  width:auto;
   border:none;
   background:pink;
   border-radius:5px;

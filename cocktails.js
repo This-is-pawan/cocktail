@@ -87,6 +87,7 @@
 // };
 
 // dataFunction(url);
+// #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a";
 
 const section = document.querySelector(".section");
@@ -105,7 +106,6 @@ const dataFunction = async (url) => {
     const response = await fetch(url, header);
     const responses = await response.json();
     const drinkData = [...responses.drinks];
-// console.log(drinkData.length);
 
     form.addEventListener("keyup", () => {
       const searchItem = input.value.toLowerCase();
@@ -178,10 +178,11 @@ const dataFunction = async (url) => {
           // console.log( selectedDrink.idDrink);
           return drink.idDrink === selectedDrink.idDrink
         });
-       
- 
+        let randomNum=Math.floor(Math.random()*drinkData.length)%2
+        console.log(randomNum);
+        
+        //  console.log(currentIndex);
         if (direction === "next") {
-         
           
           currentIndex = (currentIndex + 1) % drinkData.length;
           console.log(currentIndex  );
@@ -189,7 +190,7 @@ const dataFunction = async (url) => {
         } else {
           currentIndex = (currentIndex - 1 + drinkData.length) % drinkData.length;
         }
-        displayDrinkDetails(drinkData[randomNum], drinkData);
+        displayDrinkDetails(drinkData[currentIndex], drinkData);
       };
 
       document.querySelector(".first").addEventListener("click", () => changeDrink("prev"));
@@ -203,3 +204,4 @@ const dataFunction = async (url) => {
 };
 
 dataFunction(url);
+

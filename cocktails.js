@@ -88,6 +88,7 @@
 
 // dataFunction(url);
 // #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+// some change and add some functionality in it 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a";
 
 const section = document.querySelector(".section");
